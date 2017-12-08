@@ -1,0 +1,15 @@
+.dijitTimeTextBox {
+    width: 15em !important;
+}
+
+.flat .dijitComboBox .dijitArrowButton {
+    width: auto !important;
+}
+
+.flat .dijitValidationTextBoxError .dijitValidationContainer {
+    width: auto !important;
+}
+
+.dijitDialogTitleBar.dijitAlignTop{
+        width: inherit !important;
+}
