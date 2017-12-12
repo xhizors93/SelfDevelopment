@@ -32,8 +32,16 @@ public class AdminPathController {
         
         HttpSession session = request.getSession();
         String user = (String) session.getAttribute("session_username");
+        int userId = (Integer) session.getAttribute("session_userid");
         
-        mv.addObject("session_username",user);
+        ApplicationContext appCtx = ApplicationContextUtils.getApplicationContext();
+        UserProfileDao updao = (UserProfileDao) appCtx.getBean("UserProfileDao");
+        
+        UserProfile up = updao.getUserProfileByUserId(userId);
+        
+        String username = up.getUpFirstname();
+        
+        mv.addObject("username",username);
         return mv;
     }
     
@@ -157,6 +165,14 @@ public class AdminPathController {
     public ModelAndView loadDHTMLX(HttpServletRequest request, HttpServletResponse response)
     {
         ModelAndView mv = new ModelAndView("admin/portfolio-template/DHTMLX/dhtmlx.jsp");
+        return mv;
+    }
+    
+    //pie3ddonut
+    @RequestMapping(value="/admin/pie3ddonut")
+    public ModelAndView loadPie3DDonut(HttpServletRequest request, HttpServletResponse response)
+    {
+        ModelAndView mv = new ModelAndView("admin/portfolio-template/ANYCHART/anychart-3ddonut.jsp");
         return mv;
     }
 }
