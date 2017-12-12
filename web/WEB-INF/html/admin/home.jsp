@@ -201,7 +201,7 @@ catch(Exception ex) {
             <center>
                 <img src="../library/img/profileimage2.jpeg" class="ui image tiny circular" >
                 <div class="ui statistic inverted">
-                        <div class="label">${session_username}</div>
+                        <div class="label">${username}</div>
                 </div>
             </center>
             
@@ -242,19 +242,20 @@ catch(Exception ex) {
                 </a>
                 <div class="right menu">
                     <div class="ui dropdown pointing item">
-                        <i class="hand peace icon"></i>
-                        Welcome back,<b style="text-transform: uppercase;"> ${session_username}</b>
+                        <i class="blue user icon"></i>
+                        <b style="text-transform: uppercase;"> ${username}</b>
                         <i class="dropdown icon"></i>
                         <div class="menu">
-                            <div class="item">Applications</div>
-                            <div class="item">International Students</div>
-                            <div class="item">Scholarships</div>
-                          </div>
+                            <a class="item" href="javascript:void(0)" onclick="logout()">
+                                <i class="red wheelchair icon"></i>
+                                <font color="red">Logout</font>
+                            </a>
+                            <a class="item"  href="javascript:void(0)" onclick="profile()">
+                                <i class="user circle icon"></i>
+                                My Profile
+                            </a>
+                        </div>
                     </div>
-                    <a class="item" href="javascript:void(0)" onclick="logout()">
-                        <i class="red wheelchair icon"></i>
-                        <font color="red">Logout</font>
-                    </a>
                 </div>
             </div>
             <!-- header -->
@@ -280,7 +281,7 @@ catch(Exception ex) {
                             </div>
                             <div class="row">
                                 <div class="ui statistic">
-                                    <div class="label">${session_username}</div>
+                                    <div class="label">${username}</div>
                                 </div>
                             </div>
                         </center>
@@ -298,26 +299,45 @@ catch(Exception ex) {
                                 </div>
                             </div>
                         </div>
+                        <div class="item">
+                            <a class="active title">
+                                <i class="dropdown icon"></i>
+                                <div class="header">User Profile</div>
+                            </a>
+                            <div class="active content">
+                                <div class="menu">
+                                    <a class="item"  href="javascript:void(0)" onclick="addUser()"><i class="users icon"></i>Manage User</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a class="active title">
+                                <i class="dropdown icon"></i>
+                                <div class="header">Scheduler</div>
+                            </a>
+                            <div class="active content">
+                                <div class="menu">
+                                    <a class="item"  href="javascript:void(0)" onclick="dhtmlx()"><i class="html5 icon"></i>DHTMLX</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a class="active title">
+                                <i class="dropdown icon"></i>
+                                <div class="header">AnyChart</div>
+                            </a>
+                            <div class="active content">
+                                <div class="menu">
+                                    <a class="item"  href="javascript:void(0)" onclick="pie3ddonut()"><i class="pie chart icon"></i>3D - Donut</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- left hand side -->
                 
                 <!-- right hand side -->
                 <div class="thirteen wide column" id="rightside">
-                    <div class="ui compact red menu" id="rightupperside">
-                        <a class="item active"  href="javascript:void(0)" onclick="profile()">
-                            <i class="user circle icon"></i>
-                            My Profile
-                        </a>
-                        <a class="item"  href="javascript:void(0)" onclick="addUser()">
-                            <i class="users icon"></i>
-                            Add User
-                        </a>
-                        <a class="item"  href="javascript:void(0)" onclick="dhtmlx()">
-                            <i class="html5 icon"></i>
-                            DHTMLX
-                        </a>
-                    </div>
                     <div class="ui teal segment" id="rightbottomside">                        
                         <div id="web-panel" style="overflow:hidden;">
                             <!-- all content will be loaded here -->
@@ -360,12 +380,32 @@ catch(Exception ex) {
             on: 'hover'
         });
 
-        //ui compact menu
-        $(".ui.compact.menu > .item").click(function(e){
-            $(".ui.compact.menu > .item.active").removeClass("active"); 
+        //ui menu
+        $(".ui.menu > .item").click(function(e){
+            if($(".right.menu > * > .menu > .item").hasClass("active selected")){
+                $(".right.menu > * > .menu > .item.active.selected").removeClass("active selected"); 
+            }else{
+                $(".ui.menu > .item.active").removeClass("active"); 
+            }
             $(this).addClass("active");
+//            
+//            if($(this).children().hasClass("content")){
+//                
+//                $(this).children(".content").each(function(){
+//                    alert($(this).attr("class"));
+//                });
+//            }
         });
-    
+        
+        $(".right.menu > * > .menu > .item").click(function(e){
+            if($(".ui.menu > .item").hasClass("active")){
+                $(".ui.menu > .item.active").removeClass("active"); 
+            }else{
+                $(".right.menu > * > .menu >.item.active.selected").removeClass("active selected"); 
+            }
+            $(this).addClass("active selected");
+        });
+        
         //dropdown
         $('.ui.dropdown').dropdown();
         
@@ -415,6 +455,12 @@ catch(Exception ex) {
         window.dhtmlx = function(){
             checkResolution();
             loadPath("../admin/dhtmlx.htm");
+        }
+        
+        //pie3ddonut
+        window.pie3ddonut = function(){
+            checkResolution();
+            loadPath("../admin/pie3ddonut.htm");
         }
         
         

@@ -64,11 +64,11 @@
                     }
                 },
                 { "data": "user",render:function(user){
-                        return '<div class="ui small basic icon buttons">'
+                        return '<center><div class="ui small basic icon buttons">'
                                + '<button class="ui button" title="Edit User"><i class="blue edit icon"></i></button>'
                                + '<button class="ui button" title="Delete User"><i class="red delete icon"></i></button>'
                                + '<button class="ui button" title="Edit User Account" onclick="createUserAccount('+user.userid+')"><i class="green user icon"></i></button>'
-                              + '</div>';
+                              + '</div></center>';
                     }
                 }
             ],

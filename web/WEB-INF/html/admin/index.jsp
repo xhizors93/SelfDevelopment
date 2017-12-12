@@ -15,7 +15,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="../library/img/admin.png" /> 
   
   <link rel="stylesheet" type="text/css" href="../library/semanticui/semantic.min.css">
-  <link rel="stylesheet" type="text/css" href="../library/w2ui/dist/w2ui.css">
+  <link rel="stylesheet" type="text/css" href="../library/w2ui/dist/w2ui-dark.css">
   <script src="../library/jquery-2.2.4.min.js"></script>
   <script src="../library/semanticui/semantic.min.js"></script>
   <script src="../library/w2ui/dist/w2ui.js"></script>
